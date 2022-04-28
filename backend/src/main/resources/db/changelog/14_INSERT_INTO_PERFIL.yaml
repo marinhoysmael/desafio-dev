@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert_into_usuaro-13
+      author: ysmaelmarinho
+      changes:
+      - insert:
+          columns:
+          - column:
+              name: nome
+              value: 'ROLE_ADMNINSTRADOR'
+          dbms: 'postgresql'  
+          tableName:  perfil
+      - insert:
+          columns:
+          - column:
+              name: usuario_id
+              value: 1
+          - column:
+              name: perfil_id
+              value: 1
+          dbms: 'postgresql'  
+          tableName:  usuario_perfil
