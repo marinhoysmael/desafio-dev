@@ -2,7 +2,7 @@
 server:
     port: 8080
     servlet:
-        context-path: /movimentacao-api
+        context-path: /movimentacao
 
 spring:
     datasource:
@@ -17,9 +17,7 @@ spring:
             hibernate:
                 default_schema: public
     liquibase:
-        enabled: true
-        change-log: classpath:db/master.xml
-        default-schema: public
+        enabled: false
 
 springdoc:
     swagger-ui:
