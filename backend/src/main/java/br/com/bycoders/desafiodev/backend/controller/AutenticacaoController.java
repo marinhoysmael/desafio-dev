@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.bycoders.desafiodev.backend.dto.TokenDto;
 import br.com.bycoders.desafiodev.backend.form.LoginForm;
 import br.com.bycoders.desafiodev.backend.service.TokenService;
+import io.swagger.v3.oas.annotations.Operation;
 
 @RestController
 @RequestMapping("/auth")
@@ -28,6 +29,7 @@ public class AutenticacaoController {
 	private TokenService tokenService;
 	
 	@PostMapping
+	@Operation(summary = "Endpoint de requisição do token de autorização")
 	public ResponseEntity<TokenDto> autenticar(@RequestBody @Valid LoginForm form){
 		
 		UsernamePasswordAuthenticationToken dadosLogin = form.converter();		

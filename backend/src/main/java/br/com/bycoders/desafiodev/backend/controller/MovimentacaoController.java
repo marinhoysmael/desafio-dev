@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.MediaType;
@@ -38,9 +39,9 @@ public class MovimentacaoController {
 
 
     @GetMapping("/lista")
-    @Operation(summary = "Lista paginada das movimentações cadastradas")
+    @Operation(summary = "Lista paginada das movimentações cadastradas. page: pagina que deseja recuperar; size: quantidade de registros por página; sort: ordenação desejada (atributo de movimentacao) ")
     public ResponseEntity<Page<Movimentacao>> lista(@PageableDefault(sort = "id", direction = Direction.ASC, page = 0, size = 10) Pageable paginacao) {
-        
+
         Page<Movimentacao> movimentacoes = movimentacaoService.listar(paginacao);
         return ResponseEntity.ok().body(movimentacoes);
     }
