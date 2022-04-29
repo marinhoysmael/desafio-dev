@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_table_usuario_perfil-11
+      author: ysmaelmarinho
+      changes:
+      - createTable:
+          tableName: usuario_perfil
+          columns:
+          - column:
+              name: usuario_id
+              type: bigint
+          - column:
+              name: perfil_id
+              type: bigint

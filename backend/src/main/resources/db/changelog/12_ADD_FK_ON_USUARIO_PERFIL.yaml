@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: add_fk_on_usuario_perfil-12
+      author: ysmaelmarinho
+      changes:
+      - addForeignKeyConstraint:
+          baseColumnNames:  usuario_id  
+          baseTableName:  usuario_perfil  
+          constraintName:  fk_usuario_id
+          onDelete:  RESTRICT  
+          onUpdate:  RESTRICT  
+          referencedColumnNames:  id  
+          referencedTableName:  usuario  
+          validate:  true
+      - addForeignKeyConstraint:
+          baseColumnNames:  perfil_id  
+          baseTableName:  usuario_perfil  
+          constraintName:  fk_perfil_id
+          onDelete:  RESTRICT  
+          onUpdate:  RESTRICT  
+          referencedColumnNames:  id  
+          referencedTableName:  perfil  
+          validate:  true

@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert_into_usuaro-13
+      author: ysmaelmarinho
+      changes:
+      - insert:
+          columns:
+          - column:
+              name: nome
+              value: 'Usuario 1'
+          - column:
+              name: email
+              value: usuario@email.com
+          - column:
+              name: senha  
+              value: '$2a$10$bH.Xp30CLx6cgAoDLha.EuOLacCVxwPayiz4T2KrLIf2J2XgFSEDq'
+          dbms: 'postgresql'  
+          tableName:  usuario

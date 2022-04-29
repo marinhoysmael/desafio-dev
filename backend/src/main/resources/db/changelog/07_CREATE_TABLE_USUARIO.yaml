@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_table_usuario-07
+      author: ysmaelmarinho
+      changes:
+      - createTable:
+          tableName: usuario
+          columns:
+          - column:
+              name: id
+              type: bigint
+          - column:
+              name: nome
+              type: varchar(100)
+          - column:
+              name: email
+              type: varchar(100)
+          - column:
+              name: senha
+              type: varchar(100)
