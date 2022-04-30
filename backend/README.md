@@ -30,3 +30,5 @@ curl -X 'POST' \
   "senha": "123456"
 }'
 ```
+
+8. **Utilizar o JWT retornado na requisião de autenticação para fazer outras requisições**
