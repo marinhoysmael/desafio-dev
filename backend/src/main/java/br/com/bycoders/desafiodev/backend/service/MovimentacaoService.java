@@ -11,7 +11,9 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -22,6 +24,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import br.com.bycoders.desafiodev.backend.dto.MovimentacaoAgrupadaDTO;
 import br.com.bycoders.desafiodev.backend.model.Movimentacao;
 import br.com.bycoders.desafiodev.backend.model.TipoTransacao;
 import br.com.bycoders.desafiodev.backend.repository.MovimentacaoRepository;
@@ -108,5 +111,40 @@ public class MovimentacaoService {
         }
         
         return linha.substring(inicio - 1, Math.min(inicio - 1 + tamanho, linha.length()));
+    }
+
+    public List<MovimentacaoAgrupadaDTO> listaAgrupada() {
+        List<Movimentacao> listaMovimentacoes = movimentacaoRepository.findAll();
+
+        Map<String, MovimentacaoAgrupadaDTO> listaAgrupada = new HashMap<>();
+
+        listaMovimentacoes.forEach(movimentacao ->{
+
+            if(!listaAgrupada.containsKey(movimentacao.getNomeLoja())){
+                
+            MovimentacaoAgrupadaDTO movimentacaoAgrupada = MovimentacaoAgrupadaDTO
+                .builder()
+                .donoLoja(movimentacao.getDonoLoja())
+                .nomeLoja(movimentacao.getNomeLoja())
+                .movimentacoes(new ArrayList<>())
+                .total(new BigDecimal(0))
+                .build();
+
+                listaAgrupada.put(movimentacao.getNomeLoja(), movimentacaoAgrupada);
+
+            }
+           
+            listaAgrupada.get(movimentacao.getNomeLoja()).getMovimentacoes().add(movimentacao);
+            
+            if(movimentacao.getTipo().getNatureza().equals("Entrada")){
+                listaAgrupada.get(movimentacao.getNomeLoja()).setTotal( listaAgrupada.get(movimentacao.getNomeLoja()).getTotal().add(movimentacao.getValor()));;
+            }else{
+                listaAgrupada.get(movimentacao.getNomeLoja()).setTotal( listaAgrupada.get(movimentacao.getNomeLoja()).getTotal().subtract(movimentacao.getValor()));;
+            }
+
+        });
+
+
+        return new ArrayList<MovimentacaoAgrupadaDTO>(listaAgrupada.values());
     }
 }

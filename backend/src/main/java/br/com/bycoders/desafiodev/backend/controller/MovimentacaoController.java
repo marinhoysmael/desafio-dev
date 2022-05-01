@@ -1,6 +1,7 @@
 package br.com.bycoders.desafiodev.backend.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import br.com.bycoders.desafiodev.backend.dto.MovimentacaoAgrupadaDTO;
 import br.com.bycoders.desafiodev.backend.model.Movimentacao;
 import br.com.bycoders.desafiodev.backend.service.MovimentacaoService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -44,6 +46,13 @@ public class MovimentacaoController {
 
         Page<Movimentacao> movimentacoes = movimentacaoService.listar(paginacao);
         return ResponseEntity.ok().body(movimentacoes);
+    }
+
+    @GetMapping("/lista-agrupada")
+    @Operation(summary = "Lista agrupada por loja ")
+    public ResponseEntity<List<MovimentacaoAgrupadaDTO>> listaAgrupada(){
+        ;
+        return ResponseEntity.ok().body(movimentacaoService.listaAgrupada());
     }
 
 }
