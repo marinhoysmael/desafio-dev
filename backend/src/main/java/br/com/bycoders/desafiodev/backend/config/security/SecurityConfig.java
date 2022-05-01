@@ -44,7 +44,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http
+            .cors().and()
+            .authorizeRequests()
             .and()
                 .authorizeRequests()
                     .antMatchers(HttpMethod.GET, "/doc/**", "/swagger-ui/**", "/v3/api-docs/**")
