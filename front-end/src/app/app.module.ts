@@ -10,6 +10,7 @@ import { MeterialModule } from './config/meterial/meterial.module';
 import { LoginComponent } from './pages/login/login.component';
 import { MovimentacaoComponent } from './pages/movimentacao/movimentacao.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TabelaComponent } from './pages/movimentacao/tabela/tabela.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     LoginComponent,
     MovimentacaoComponent,
+    TabelaComponent,
   ],
   imports: [
     BrowserModule,

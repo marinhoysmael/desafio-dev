@@ -8,6 +8,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [],
@@ -20,7 +21,8 @@ import {MatTableModule} from '@angular/material/table';
     MatGridListModule,
     MatButtonModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule
   ],
   exports:[
     MatToolbarModule,
@@ -30,7 +32,8 @@ import {MatTableModule} from '@angular/material/table';
     MatGridListModule,
     MatButtonModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule
   ]
 })
 export class MeterialModule { }
