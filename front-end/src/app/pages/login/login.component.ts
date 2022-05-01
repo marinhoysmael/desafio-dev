@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/config/auth/auth.service';
+import { Login } from './Login';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +11,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  public loginForm = this.formBuilder.group(new Login());
 
-  ngOnInit(): void {
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) { }
+
+
+  ngOnInit(): void { }
+
+  logar(): void {
+    let login = new Login();
+    login.email = this.loginForm.value.email;
+    login.senha = this.loginForm.value.senha;
+
+    this.authService.logar(login).subscribe((retorno) =>{
+  
+      sessionStorage.setItem("BARER_TOKEN", retorno.token);
+
+      this.router.navigateByUrl("/movimentacao")
+    })
   }
-
 }

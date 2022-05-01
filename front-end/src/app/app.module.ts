@@ -1,5 +1,6 @@
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LOCALE_ID, NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,13 +13,19 @@ import { MovimentacaoComponent } from './pages/movimentacao/movimentacao.compone
   declarations: [
     AppComponent,
     LoginComponent,
-    MovimentacaoComponent
+    MovimentacaoComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
+    {
+      provide: LOCALE_ID, useValue: 'pt-BR',
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpInterceptService,
