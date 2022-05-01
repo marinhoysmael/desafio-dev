@@ -1,4 +1,4 @@
-<div class="login-page">
+<!-- <div class="login-page">
     <div class="form">
         <form class="login-form" [formGroup]="loginForm">
             <input type="email" placeholder="email" formControlName="email"/>
@@ -6,4 +6,28 @@
             <button (click)="logar()" >login</button>
         </form>
     </div>
-</div>
+</div> -->
+
+<mat-card class="card-login">
+    <mat-card-header>
+        <mat-card-title>Login</mat-card-title>
+        <mat-card-subtitle>Informe o email e a senha</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <form class="login-form" [formGroup]="loginForm">
+            <mat-form-field class="imput-login" appearance="fill">
+                <mat-label>Email</mat-label>
+                <input type="email" formControlName="email" matInput placeholder="Ex. usuario@email.com">
+            </mat-form-field>
+    
+            <mat-form-field class="imput-login" appearance="fill">
+                <mat-label>Senha</mat-label>
+                <input type="password" formControlName="senha" matInput placeholder="Ex. 123456">
+            </mat-form-field>
+        </form>
+
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button color="primary" class="button-logar" (click)="logar()" >Logar</button>
+    </mat-card-actions>
+</mat-card>

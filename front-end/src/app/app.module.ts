@@ -6,8 +6,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpInterceptService } from './config/http-intercept/http-intercept.service';
+import { MeterialModule } from './config/meterial/meterial.module';
 import { LoginComponent } from './pages/login/login.component';
 import { MovimentacaoComponent } from './pages/movimentacao/movimentacao.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +23,9 @@ import { MovimentacaoComponent } from './pages/movimentacao/movimentacao.compone
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MeterialModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {
