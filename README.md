@@ -84,7 +84,6 @@ Este desafio foi baseado neste outro desafio: https://github.com/lschallenges/da
 
 Boa sorte!
 
-
 # Solução
 
 1. Criei dois diretorios para armazenar as aplicações back-end e front-end. Ambos possuem um readme.md explicativo das tecnologias e configuracoes.
