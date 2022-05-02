@@ -1,7 +1,19 @@
 version: "3.5"
 services:
+  
+  front-end:
+    image: 'front-end:latest'
+    container_name: front-end
+    build:
+      context: ./front-end
+    depends_on:
+      - back-end
+    ports: 
+      - "8000:80"
+  
   back-end:
     image: 'back-end:latest'
+    container_name: back-end
     build:
       context: ./backend
     depends_on:
@@ -12,6 +24,7 @@ services:
       - SPRING_DATASOURCE_PASSWORD=postgres
     ports:
       - "8080:8080"
+  
   database:
     image: 'postgres:13.1-alpine'
     container_name: database

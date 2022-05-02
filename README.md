@@ -83,3 +83,40 @@ Este desafio foi baseado neste outro desafio: https://github.com/lschallenges/da
 ---
 
 Boa sorte!
+
+
+# Solução
+
+1. Criei dois diretorios para armazenar as aplicações back-end e front-end. Ambos possuem um readme.md explicativo das tecnologias e configuracoes.
+
+**Execução do projeto com docker compose:**
+Na raiz deste repositório execute os seguintes comandos:
+
+1. docker compose build front-end
+2. dcoker compose up
+
+O Doscker subirá os seguintes serviços:
+| Serviço | Porta | Tecnologia |
+| ---- | -------- | --------- |
+| front-end | 8000 | angular + node + nginx |
+| back-end | 8080 | java + spring |
+| banco de dados | 5432 | postegres |
+
+Para utilizar a plicação acesse um navegador no endereço:
+http://localhost:8000
+
+E logue com o login:
+email: usuario@email.com
+senha: 123456
+
+
+Para acessar a documentação da API do back-end utilize o endereço:
+http://localhost:8080/movimentacao-api/doc
+
+Para conectar ao banco de dados posgres utilize as seguintes informações:
+HOST: localhost
+PORT: 5432
+DATABASE: postgres
+USENARME: postgres
+PASSWORD: postgres
+
