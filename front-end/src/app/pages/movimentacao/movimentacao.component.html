@@ -13,6 +13,31 @@
     <mat-divider></mat-divider>
 
     <mat-card-content>
+        <div class="painel-resumo">
+            <mat-card class="example-card" *ngFor="let movimentacaoAgrupada of movimentacoesAgrupadas">
+                <mat-card-header>
+                    <mat-card-title>{{movimentacaoAgrupada.nomeLoja}}</mat-card-title>
+                    <mat-card-subtitle>{{movimentacaoAgrupada.donoLoja}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <mat-divider></mat-divider>
+                    <div class="extrato" style="height: 200px; overflow-y: scroll; width: 107%;">
+                        <mat-list>
+                            <mat-list-item *ngFor="let movimentacao of movimentacaoAgrupada.movimentacoes">
+                                <mat-icon mat-list-icon>{{movimentacao.tipo.sinal == '-'? 'horizontal_rule': 'add'}}</mat-icon>
+                                <div mat-line><b>{{movimentacao.tipo.descricao}}</b></div>
+                                <div mat-line>Valor: R$ {{movimentacao.valor}} </div>
+                                <div mat-line>Cartão: {{movimentacao.cartao}}</div>
+                                <div mat-line>{{movimentacao.data}} {{movimentacao.hora}}</div>
+                            </mat-list-item>
+                          </mat-list>
+                    </div>     
+                    <mat-divider></mat-divider>   
+                    <div class="total">Total: R$ {{movimentacaoAgrupada.total}}</div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <br>
         <br>
         <app-tabela  (paginacaoEventEmitter)="paginacaoEvent($event)"></app-tabela>
     </mat-card-content>

@@ -10,6 +10,10 @@ import {MatInputModule} from '@angular/material/input';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatListModule} from '@angular/material/list';
+import {MatIconModule} from '@angular/material/icon';
 @NgModule({
   declarations: [],
   imports: [
@@ -23,7 +27,11 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatInputModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    ScrollingModule,
+    MatTabsModule,
+    MatListModule,
+    MatIconModule
   ],
   exports:[
     MatToolbarModule,
@@ -34,7 +42,10 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatButtonModule,
     MatInputModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatTabsModule,
+    MatListModule,
+    MatIconModule
   ]
 })
 export class MeterialModule { }

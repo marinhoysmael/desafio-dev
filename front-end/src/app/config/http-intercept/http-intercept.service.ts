@@ -1,5 +1,6 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpStatusCode } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -9,7 +10,8 @@ export class HttpInterceptService implements HttpInterceptor {
   private BASE_URL = 'http://localhost:8080/movimentacao-api'
 
   constructor(
-    private router: Router
+    private router: Router,
+    private snckBar: MatSnackBar
   ) { }
 
   public intercept(
@@ -37,12 +39,14 @@ export class HttpInterceptService implements HttpInterceptor {
     switch (error.status) {
 
       case HttpStatusCode.Forbidden:
-
         if(window.location.pathname != '/login'){
           sessionStorage.clear();
           window.location.href = '/login';
         }
 
+        break;
+      case HttpStatusCode.InternalServerError:
+        alert("Erro ao processar requisição")
         break;
     }
     return throwError(() => new Error('Something bad happened; please try again later.'));

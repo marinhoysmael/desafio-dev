@@ -15,6 +15,10 @@ export class MovimentacaoService {
     return this.http.get<any>(`/movimentacao/lista?page=${page}&size=${size}`);
   }
 
+  public listarAgrupados(): Observable<any>{
+    return this.http.get<any>(`/movimentacao/lista-agrupada`);
+  }
+
   public uploadBatchCnab(file: File): Observable<any>{
     const params = new HttpParams();
     const headers = new HttpHeaders();

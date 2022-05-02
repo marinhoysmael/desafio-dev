@@ -17,10 +17,13 @@ export class MovimentacaoComponent implements OnInit {
   @ViewChild(TabelaComponent) tabela !: TabelaComponent ; 
   private arquivoCnab!: File;
 
+  public movimentacoesAgrupadas: any;
+
   constructor(private movimentacaoService: MovimentacaoService, private snckBar: MatSnackBar) { }
   
   ngOnInit(): void {
     this.carregarMovimentacoes();
+    this.carregarMovimentacoesAgrupadas();
   }
 
 
@@ -41,13 +44,16 @@ export class MovimentacaoComponent implements OnInit {
     });
   }
 
-  public paginacaoEvent(event: PageEvent): PageEvent{
+  carregarMovimentacoesAgrupadas():void{
+    this.movimentacaoService.listarAgrupados().subscribe(data =>{
+      this.movimentacoesAgrupadas =  data;
+    });
+  }
 
+  public paginacaoEvent(event: PageEvent): PageEvent{
     
     this.carregarMovimentacoes(event);
     
-    console.log(event);
-
     return event;
   }
 
@@ -67,7 +73,7 @@ export class MovimentacaoComponent implements OnInit {
           verticalPosition: 'top',
         });
         this.carregarMovimentacoes();
-  
+        this.carregarMovimentacoesAgrupadas();
       });
     }
   }
