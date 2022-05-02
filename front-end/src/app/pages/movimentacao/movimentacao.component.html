@@ -3,6 +3,12 @@
     <mat-card-header>
         <mat-card-title>Extrato de Movimentações</mat-card-title>
         <mat-card-subtitle>Carregue um arquivo CNAB para processar novos dados</mat-card-subtitle>
+        <mat-divider [vertical]="true"></mat-divider>
+        <div class="file-cnab">
+            <mat-card-subtitle>Carregue um arquivo CNAB para processar novos dados</mat-card-subtitle>
+            <input type="file"  accept="text/plain"  (change)="carregarArquivoEvent($event)" name="file">
+            <button mat-button color="primary" (click)="enviarArquivo()">Enviar Arquivos</button>
+        </div>
     </mat-card-header>
     <mat-divider></mat-divider>
 
@@ -10,8 +16,4 @@
         <br>
         <app-tabela  (paginacaoEventEmitter)="paginacaoEvent($event)"></app-tabela>
     </mat-card-content>
-    
-    <mat-card-actions>
-        
-    </mat-card-actions>
 </mat-card>
